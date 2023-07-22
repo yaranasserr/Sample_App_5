@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
   <meta charset="utf-8">
@@ -11,4 +12,19 @@
 <body>
   <%= yield %>
 </body>
+=======
+  <head>
+    <title>SampleApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+>>>>>>> filling-in-layout
 </html>
