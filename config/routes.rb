@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   root 'static_pages#home'
   get 'static_pages/contact'
-  get 'users/signup'
+  get 'users/new'
+  # get 'users/signup'
 
   end
   # Rails.application.routes.draw do
