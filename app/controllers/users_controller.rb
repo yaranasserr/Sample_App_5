@@ -8,9 +8,10 @@ class UsersController < ApplicationController
   end
 
   def create
-  @user = User.new(user_params)
+    @user = User.new(user_params)
   if @user.save
-  # Handle a successful save.
+    flash[:success] = "Welcome to the Sample App!"
+    redirect_to @user
   else
   render 'new'
   end
@@ -19,7 +20,19 @@ class UsersController < ApplicationController
   private
 
     def user_params
-    params.require(:user).permit(:name, :email, :password,
-    :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
+# def some_action
+#   # Your code logic here
+
+#   # Assuming you have an object with errors, e.g., @model
+#   @error_messages = render_to_string(partial: 'shared/error_messages', locals: { object: @model }, formats: [:html])
+
+#   # Rest of your code logic
+# end
+# flash = { success: "It worked!", danger: "It failed." }
+# => {:success=>"It worked!", danger: "It failed."}
+# >> flash.each do |key, value|
+# ?> puts "#{key}"
+# ?> puts "#{value}"
