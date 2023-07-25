@@ -18,5 +18,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 end
-#user = User.new(name: "Michael Hartl", email: "michael@example.com")
-#User.create(name: "A Nother", email: "another@example.org")
+
+def User.digest(string)
+  cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                BCrypt::Engine.cost
+  BCrypt::Password.create(string, cost: cost)
+end
