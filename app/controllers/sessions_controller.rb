@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      forwarding_url = session[:forwarding_url]
       reset_session
       remember user
       log_in user
@@ -14,8 +15,7 @@ class SessionsController < ApplicationController
 
     else
       flash.now[:danger] = 'Invalid email/password combination'
-      render'new'
-      #,status: :unprocessable_entity
+      render'new',status: :unprocessable_entity
     end
 
     def current_user
