@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -39,5 +39,10 @@ class User < ApplicationRecord
       return false if remember_digest.nil?
       update_attribute(:remember_digest, nil)
     end
+    # Activates an account.
+  def activate
+    update_attribute(:activated,    true)
+    update_attribute(:activated_at, Time.zone.now)
+  end
 
   end
