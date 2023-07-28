@@ -1,6 +1,17 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = '<render-app-link>.onrender.com
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.smtp_settings
+  :user_name => ENV[ 'MAIL_USERNAME'],
+  :password => ENV['MAIL_PASSWORD'],
+  :address => 'sandbox.smtp.mailtrap.io',
+  :host => 'sandbox.smtp.mailtrap.io', # Not sure if this can be changed
+  :port => '2525',
+  :authentication => :cram_md5
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
