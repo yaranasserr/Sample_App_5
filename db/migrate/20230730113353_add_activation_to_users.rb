@@ -6,3 +6,7 @@ class AddActivationToUsers < ActiveRecord::Migration[7.0]
   end
 end
 
+# User.connection
+# User.columns.map(&:name)
+
+#ActiveRecord::Base.connection.execute("ALTER TABLE users DROP COLUMN IF EXISTS activation_digest")
